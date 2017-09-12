@@ -21,7 +21,7 @@ public class GoodsController {
 	private GoodsDAO gDao;
 	
 	@RequestMapping(value="/goods/list",method=RequestMethod.POST)
-	public @ResponseBody List<GoodsInfo> getGoodsInfoList(GoodsInfo gi){
+	public @ResponseBody List<GoodsInfo> getGoodsInfoList(@RequestBody GoodsInfo gi){
 		return gs.getGoodsInfoList(gi);
 	}
 	

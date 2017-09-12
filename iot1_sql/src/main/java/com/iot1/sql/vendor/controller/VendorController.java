@@ -28,7 +28,7 @@ public class VendorController {
 	VendorDAO vDao;
 	
 	@RequestMapping(value="/vendor/list", method=RequestMethod.POST)
-	public @ResponseBody List<VendorInfo> getVendorInfoList(VendorInfo vi){
+	public @ResponseBody List<VendorInfo> getVendorInfoList(@RequestBody VendorInfo vi){
 		return vs.getVendorInfoList(vi);
 	}
 	
@@ -47,7 +47,7 @@ public class VendorController {
 		model.addAttribute("vendors",result);
 		String url=request.getParameter("url");
 		if(url==null || url.equals("")){
-		return "goods/goods_list_incell";
+		return "goods/multi_list";
 				}
 		return url;
 	}
