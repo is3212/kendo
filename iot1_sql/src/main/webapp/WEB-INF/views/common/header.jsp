@@ -4,14 +4,12 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ taglib prefix="kendo" uri="http://www.kendoui.com/jsp/tags" %>
+<%@ include file="/WEB-INF/views/common/common.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<c:set var="pVar" value="1.3.2"/>
-<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
-<c:set var="nowUrl" value="${pageContext.request.requestURI}"/>
 <script src="<c:url value='/resources/js/jquery.min.js' />"></script>
 <script src="<c:url value="/resources/js/jquery-3.2.1.js?version=${pVar}"/>"></script>
 <script src="<c:url value="/resources/js/jquery-ui-1.9.2.custom.js?version=${pVar}"/>"></script>
@@ -60,6 +58,9 @@ var KendoItem=function(obj,grid,url,keyStr){
 		        xhr.setRequestHeader("Content-Type", "application/json");
 		    },
 		    success : function(result){
+		    	if(result.key){
+		    		result=result[result.key];
+		    	}
 		    	options.success(result);
 			},
 			error : function(xhr){
